@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="AIUB">
+    <meta name="description" content="University online admission form for new students">
+    <meta name="keywords" content="university, admission, form, student, enrollment">
+    <title>University Admission Form - AIUB</title>
+</head>
+<body>
+    <header>
+        <h1>American International University Bangladesh (AIUB)</h1>
+        <h2>Online Admission Form</h2>
+        <p>Please fill out all required fields marked with *</p>
+    </header>
+
+    <main>
+        <form action="#" method="post" enctype="multipart/form-data">
+            
+            <!-- Personal Information Section -->
+            <fieldset>
+                <legend>Personal Information</legend>
+                
+                <label for="firstName">First Name: *</label><br>
+                <input type="text" id="firstName" name="firstName" maxlength="50" required><br><br>
+                
+                <label for="lastName">Last Name: *</label><br>
+                <input type="text" id="lastName" name="lastName" maxlength="50" required><br><br>
+                
+                <label for="email">Email Address: *</label><br>
+                <input type="email" id="email" name="email" required><br><br>
+                
+                <label for="phone">Phone Number: *</label><br>
+                <input type="text" id="phone" name="phone" maxlength="15" required><br><br>
+                
+                <label for="dob">Date of Birth: *</label><br>
+                <input type="date" id="dob" name="dob" required><br><br>
+                
+                <label>Gender: *</label><br>
+                <input type="radio" id="male" name="gender" value="male" required>
+                <label for="male">Male</label><br>
+                <input type="radio" id="female" name="gender" value="female" required>
+                <label for="female">Female</label><br>
+                <input type="radio" id="other" name="gender" value="other" required>
+                <label for="other">Other</label><br><br>
+                
+                <label for="address">Present Address: *</label><br>
+                <textarea id="address" name="address" rows="4" cols="50" maxlength="200" required></textarea><br><br>
+                
+                <label for="nationality">Nationality: *</label><br>
+                <input type="text" id="nationality" name="nationality" maxlength="50" required><br><br>
+            </fieldset>
+
+            <br>
+
+            <!-- Academic Information Section -->
+            <fieldset>
+                <legend>Academic Information</legend>
+                
+                <label for="sscSchool">SSC School/College Name: *</label><br>
+                <input type="text" id="sscSchool" name="sscSchool" maxlength="100" required><br><br>
+                
+                <label for="sscYear">SSC Passing Year: *</label><br>
+                <input type="text" id="sscYear" name="sscYear" maxlength="4" required><br><br>
+                
+                <label for="sscGPA">SSC GPA/Grade: *</label><br>
+                <input type="text" id="sscGPA" name="sscGPA" maxlength="10" required><br><br>
+                
+                <label for="hscCollege">HSC College Name: *</label><br>
+                <input type="text" id="hscCollege" name="hscCollege" maxlength="100" required><br><br>
+                
+                <label for="hscYear">HSC Passing Year: *</label><br>
+                <input type="text" id="hscYear" name="hscYear" maxlength="4" required><br><br>
+                
+                <label for="hscGPA">HSC GPA/Grade: *</label><br>
+                <input type="text" id="hscGPA" name="hscGPA" maxlength="10" required><br><br>
+                
+                <label for="hscGroup">HSC Group: *</label><br>
+                <select id="hscGroup" name="hscGroup" required>
+                    <option value="">-- Select Group --</option>
+                    <option value="science">Science</option>
+                    <option value="commerce">Commerce</option>
+                    <option value="arts">Arts</option>
+                    <option value="business">Business Studies</option>
+                </select><br><br>
+            </fieldset>
+
+            <br>
+
+            <!-- Course Selection Section -->
+            <fieldset>
+                <legend>Course Selection</legend>
+                
+                <label for="faculty">Preferred Faculty: *</label><br>
+                <select id="faculty" name="faculty" required>
+                    <option value="">-- Select Faculty --</option>
+                    <option value="fst">Faculty of Science and Technology</option>
+                    <option value="fba">Faculty of Business Administration</option>
+                    <option value="fass">Faculty of Arts and Social Sciences</option>
+                    <option value="fe">Faculty of Engineering</option>
+                </select><br><br>
+                
+                <label for="department">Preferred Department/Program: *</label><br>
+                <select id="department" name="department" required>
+                    <option value="">-- Select Department --</option>
+                    <option value="cse">Computer Science and Engineering</option>
+                    <option value="eee">Electrical and Electronic Engineering</option>
+                    <option value="ce">Civil Engineering</option>
+                    <option value="bba">Bachelor of Business Administration</option>
+                    <option value="english">English</option>
+                    <option value="law">Law</option>
+                    <option value="economics">Economics</option>
+                </select><br><br>
+                
+                <label for="admissionSemester">Admission Semester: *</label><br>
+                <select id="admissionSemester" name="admissionSemester" required>
+                    <option value="">-- Select Semester --</option>
+                    <option value="spring2025">Spring 2025</option>
+                    <option value="summer2025">Summer 2025</option>
+                    <option value="fall2025">Fall 2025</option>
+                </select><br><br>
+                
+                <label>Areas of Interest: (Select all that apply)</label><br>
+                <input type="checkbox" id="programming" name="interests" value="programming">
+                <label for="programming">Programming</label><br>
+                <input type="checkbox" id="webdev" name="interests" value="webdev">
+                <label for="webdev">Web Development</label><br>
+                <input type="checkbox" id="ai" name="interests" value="ai">
+                <label for="ai">Artificial Intelligence</label><br>
+                <input type="checkbox" id="database" name="interests" value="database">
+                <label for="database">Database Management</label><br>
+                <input type="checkbox" id="networking" name="interests" value="networking">
+                <label for="networking">Networking</label><br>
+                <input type="checkbox" id="cybersecurity" name="interests" value="cybersecurity">
+                <label for="cybersecurity">Cybersecurity</label><br><br>
+            </fieldset>
+
+            <br>
+
+            <!-- Document Upload Section -->
+            <fieldset>
+                <legend>Document Upload</legend>
+                
+                <label for="photo">Recent Passport Size Photograph: *</label><br>
+                <input type="file" id="photo" name="photo" accept="image/*" required><br><br>
+                
+                <label for="sscCertificate">SSC Certificate/Transcript: *</label><br>
+                <input type="file" id="sscCertificate" name="sscCertificate" accept=".pdf,.jpg,.jpeg,.png" required><br><br>
+                
+                <label for="hscCertificate">HSC Certificate/Transcript: *</label><br>
+                <input type="file" id="hscCertificate" name="hscCertificate" accept=".pdf,.jpg,.jpeg,.png" required><br><br>
+                
+                <label for="nidBirth">NID/Birth Certificate:</label><br>
+                <input type="file" id="nidBirth" name="nidBirth" accept=".pdf,.jpg,.jpeg,.png"><br><br>
+            </fieldset>
+
+            <br>
+
+            <!-- Guardian Information Section -->
+            <fieldset>
+                <legend>Guardian Information</legend>
+                
+                <label for="guardianName">Guardian's Name: *</label><br>
+                <input type="text" id="guardianName" name="guardianName" maxlength="100" required><br><br>
+                
+                <label for="guardianRelation">Relation: *</label><br>
+                <select id="guardianRelation" name="guardianRelation" required>
+                    <option value="">-- Select Relation --</option>
+                    <option value="father">Father</option>
+                    <option value="mother">Mother</option>
+                    <option value="brother">Brother</option>
+                    <option value="sister">Sister</option>
+                    <option value="other">Other</option>
+                </select><br><br>
+                
+                <label for="guardianPhone">Guardian's Phone Number: *</label><br>
+                <input type="text" id="guardianPhone" name="guardianPhone" maxlength="15" required><br><br>
+                
+                <label for="guardianEmail">Guardian's Email:</label><br>
+                <input type="email" id="guardianEmail" name="guardianEmail"><br><br>
+                
+                <label for="guardianOccupation">Guardian's Occupation:</label><br>
+                <input type="text" id="guardianOccupation" name="guardianOccupation" maxlength="50"><br><br>
+            </fieldset>
+
+            <br>
+
+            <!-- Terms and Conditions -->
+            <fieldset>
+                <legend>Declaration</legend>
+                
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">I hereby declare that all the information provided above is true and correct to the best of my knowledge. *</label><br><br>
+            </fieldset>
+
+            <br>
+
+            <!-- Submit and Reset Buttons -->
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+        </form>
+    </main>
+
+    <footer>
+        <hr>
+        <p>&copy; 2025 American International University Bangladesh (AIUB). All rights reserved.</p>
+        <p>Contact: admission@aiub.edu | Phone: +880-2-8810306-9</p>
+    </footer>
+</body>
+</html>
