@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2em;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2.5em;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 1.5em;
+            font-size: 2.2em;
+        }
+        
+        .input-section {
+            background-color: #f8f9fa;
+            padding: 2em;
+            border-radius: 10px;
+            margin-bottom: 2em;
+            border: 2px solid #667eea;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5em;
+        }
+        
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.5em;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+        
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 0.8em;
+            font-size: 1em;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .btn-add {
+            width: 100%;
+            padding: 1em;
+            font-size: 1.1em;
+            font-weight: bold;
+            background-color: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        .btn-add:hover {
+            background-color: #764ba2;
+            transform: translateY(-2px);
+        }
+        
+        .btn-add:active {
+            transform: translateY(0);
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.9em;
+            margin-top: 0.5em;
+            display: none;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+        
+        .table-section {
+            margin-top: 2em;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1em;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        thead {
+            background-color: #2c3e50;
+            color: white;
+        }
+        
+        th {
+            padding: 1em;
+            text-align: left;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        
+        td {
+            padding: 1em;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tbody tr {
+            transition: transform 0.2s;
+        }
+        
+        tbody tr:hover {
+            transform: scale(1.02);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .before-2000 {
+            background-color: #d3d3d3;
+        }
+        
+        .after-2000 {
+            background-color: #90ee90;
+        }
+        
+        .no-books {
+            text-align: center;
+            padding: 2em;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Library Management System</h1>
+        
+        <div class="input-section">
+            <div class="form-group">
+                <label for="bookTitle">Book Title:</label>
+                <input type="text" id="bookTitle" placeholder="Enter book title (letters only, no spaces)">
+                <div id="titleError" class="error-message"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="bookYear">Publication Year:</label>
+                <input type="number" id="bookYear" placeholder="Enter year (1900 - current year)">
+                <div id="yearError" class="error-message"></div>
+            </div>
+            
+            <button class="btn-add" onclick="addBook()">Add Book</button>
+        </div>
+        
+        <div class="table-section">
+            <h2 style="color: #2c3e50; margin-bottom: 1em;">Book Collection</h2>
+            <table id="bookTable">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Year</th>
+                    </tr>
+                </thead>
+                <tbody id="bookTableBody">
+                    <tr>
+                        <td colspan="2" class="no-books">No books added yet. Start by adding a book above!</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script>
+        function addBook() {
+            const titleInput = document.getElementById('bookTitle');
+            const yearInput = document.getElementById('bookYear');
+            const titleError = document.getElementById('titleError');
+            const yearError = document.getElementById('yearError');
+            
+            const title = titleInput.value.trim();
+            const year = yearInput.value.trim();
+            
+            
+            titleError.classList.remove('show');
+            yearError.classList.remove('show');
+            titleError.textContent = '';
+            yearError.textContent = '';
+            
+            let isValid = true;
+            
+            
+            if (title === '') {
+                titleError.textContent = 'Title field cannot be empty.';
+                titleError.classList.add('show');
+                isValid = false;
+            } else if (!/^[A-Za-z]+$/.test(title)) {
+                titleError.textContent = 'Title must contain only alphabetic characters (no numbers, special characters, or spaces).';
+                titleError.classList.add('show');
+                isValid = false;
+            }
+            
+            
+            const currentYear = new Date().getFullYear();
+            const yearNum = parseInt(year);
+            
+            if (year === '') {
+                yearError.textContent = 'Year field cannot be empty.';
+                yearError.classList.add('show');
+                isValid = false;
+            } else if (!/^\d{4}$/.test(year)) {
+                yearError.textContent = 'Year must be a four-digit number.';
+                yearError.classList.add('show');
+                isValid = false;
+            } else if (yearNum < 1900 || yearNum > currentYear) {
+                yearError.textContent = `Year must be between 1900 and ${currentYear}.`;
+                yearError.classList.add('show');
+                isValid = false;
+            }
+            
+            
+            if (isValid) {
+                const tableBody = document.getElementById('bookTableBody');
+                
+               
+                const noBooks = tableBody.querySelector('.no-books');
+                if (noBooks) {
+                    tableBody.innerHTML = '';
+                }
+                
+                
+                const newRow = document.createElement('tr');
+                
+                
+                if (yearNum < 2000) {
+                    newRow.classList.add('before-2000');
+                } else {
+                    newRow.classList.add('after-2000');
+                }
+                
+             
+                const titleCell = document.createElement('td');
+                titleCell.textContent = title;
+                
+                const yearCell = document.createElement('td');
+                yearCell.textContent = year;
+                
+                newRow.appendChild(titleCell);
+                newRow.appendChild(yearCell);
+                
+                
+                tableBody.appendChild(newRow);
+                
+                
+                titleInput.value = '';
+                yearInput.value = '';
+                
+                
+                titleInput.style.borderColor = '#2ecc71';
+                yearInput.style.borderColor = '#2ecc71';
+                
+                setTimeout(() => {
+                    titleInput.style.borderColor = '#ddd';
+                    yearInput.style.borderColor = '#ddd';
+                }, 1000);
+            }
+        }
+        
+        
+        document.getElementById('bookYear').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                addBook();
+            }
+        });
+        
+        document.getElementById('bookTitle').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                addBook();
+            }
+        });
+    </script>
+</body>
+</html>
